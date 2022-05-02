@@ -22,6 +22,16 @@ var caracteresDesencriptados = {
 const re = /[A-Z]|[0-9]|[Á-Ź]|[á-ź]/g;
 const reg2 = /[.,´¡¿"#=_;:/%'*+\-?^${}()|[\]\\&°¬!~`]/g;
 
+function encriptar(texto) {
+  const RegExp = /[aeiou]/g;
+  return texto.replaceAll(RegExp, (i) => caracteresEncriptados[i]);
+}
+
+function desencriptar(texto) {
+  const RegExp = /ai|enter|imes|ober|ufat/g;
+  return texto.replaceAll(RegExp, (i) => caracteresDesencriptados[i]);
+}
+
 botonEncriptar.addEventListener("click", function (event) {
   event.preventDefault();
   if (re.test(inputIngreso.value) || reg2.test(inputIngreso.value)) {
@@ -43,16 +53,6 @@ botonDesencriptar.addEventListener("click", function (event) {
     inputRetorno.value = desencriptar(inputIngreso.value);
   }
 });
-
-function encriptar(texto) {
-  const RegExp = /[aeiou]/g;
-  return texto.replaceAll(RegExp, (i) => caracteresEncriptados[i]);
-}
-
-function desencriptar(texto) {
-  const RegExp = /ai|enter|imes|ober|ufat/g;
-  return texto.replaceAll(RegExp, (i) => caracteresDesencriptados[i]);
-}
 
 botonCopiar.addEventListener("click", function (event) {
   event.preventDefault();
