@@ -19,8 +19,7 @@ var caracteresDesencriptados = {
   ober: "o",
   ufat: "u",
 };
-const notAllowsymbols1 = /[A-Z]|[0-9]|[Á-Ź]|[á-ź]/g;
-const notAllowsymbols2 = /[@.,´¡¿"#=_;:/%'*+\-?^${}()|[\]\\&°¬!~`]/g;
+const notAllowsymbols1 = /[^a-z]/g;
 
 function encriptar(texto) {
   const RegExp = /[aeiou]/g;
@@ -34,7 +33,7 @@ function desencriptar(texto) {
 
 botonEncriptar.addEventListener("click", function (event) {
   event.preventDefault();
-  if (notAllowsymbols1.test(inputIngreso.value) || notAllowsymbols2.test(inputIngreso.value)) {
+  if (notAllowsymbols1.test(inputIngreso.value)) {
     alert("no se pueden utilizar mayusculas, acentos ni caracteres especiales");
     inputIngreso.value = "error,caracteres no soportados";
     inputRetorno.value = inputIngreso.value;
@@ -45,7 +44,7 @@ botonEncriptar.addEventListener("click", function (event) {
 
 botonDesencriptar.addEventListener("click", function (event) {
   event.preventDefault();
-  if (notAllowsymbols1.test(inputIngreso.value) || notAllowsymbols2.test(inputIngreso.value)) {
+  if (notAllowsymbols1.test(inputIngreso.value)) {
     alert("no se pueden utilizar mayusculas,acentos ni caracteres especiales");
     inputIngreso.value = "error,caracteres no soportados";
     inputRetorno.value = inputIngreso.value;
